@@ -1,6 +1,6 @@
-# Tauri + Leptos
+# 超大文本编辑器
 
-This template should help get you started developing with Tauri and Leptos.
+基于 Tauri and Leptos. 支持 Android、PC
 
 ## Recommended IDE Setup
 
