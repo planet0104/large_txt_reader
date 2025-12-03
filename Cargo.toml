@@ -1,0 +1,23 @@
+[package]
+name = "large_txt_reader"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+leptos = { version = "0.7", features = ["csr"] }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+console_error_panic_hook = "0.1.7"
+# tauri-plugin-android-fs = "23.0.1"
+web-sys = { version = "0.3", features = ["console"] }
+
+# tauri 插件应当只在 Tauri 后端 (src-tauri) 使用，
+# 不要把它作为前端 wasm crate 的依赖（会把 tauri/wry/tao 等桌面依赖拉进 wasm 构建）。
+# 如果需要和前端通信，使用 invoke + command。
+
+[workspace]
+members = ["src-tauri"]

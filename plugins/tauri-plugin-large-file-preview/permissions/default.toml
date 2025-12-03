@@ -1,0 +1,3 @@
+[default]
+description = "Default permissions for the plugin"
+permissions = ["allow-open-file", "allow-close-file", "allow-get-total-lines", "allow-mmap-search", "allow-read-lines", "allow-get-file-size"]

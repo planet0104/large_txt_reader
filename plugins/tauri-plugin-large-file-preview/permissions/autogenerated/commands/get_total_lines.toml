@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-get-total-lines"
+description = "Enables the get_total_lines command without any pre-configured scope."
+commands.allow = ["get_total_lines"]
+
+[[permission]]
+identifier = "deny-get-total-lines"
+description = "Denies the get_total_lines command without any pre-configured scope."
+commands.deny = ["get_total_lines"]

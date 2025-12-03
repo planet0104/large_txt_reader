@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-mmap-search"
+description = "Enables the mmap_search command without any pre-configured scope."
+commands.allow = ["mmap_search"]
+
+[[permission]]
+identifier = "deny-mmap-search"
+description = "Denies the mmap_search command without any pre-configured scope."
+commands.deny = ["mmap_search"]

@@ -1,0 +1,341 @@
+.logo.leptos:hover {
+  filter: drop-shadow(0 0 2em #a82e20);
+}
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #0f0f0f;
+  background-color: #f6f6f6;
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Editor metrics: keep font-size and line-height consistent for textarea and line numbers */
+:root {
+  --editor-font-size: 1rem;
+  --editor-line-height: 24px; /* matches original root line-height */
+}
+
+/* Ensure the document and root elements fill the viewport so our app can size to it */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Leptos mounts into the body; make it a column flex container */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* App container should take all available space */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Header adjustments: padding matches search bar, title uses default font with bold weight */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.title {
+  margin: 0;
+  font-family: inherit;
+  font-weight: 700; /* default font with bold weight */
+  font-size: 1.125rem;
+}
+
+/* Main content area must be allowed to shrink and grow inside flex layout */
+.main-content {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0; /* important for children with overflow (textarea) */
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* Ensure the right-side range input (custom scrollbar) does not overflow the
+   editor bottom when containers have padding. Subtract a small amount to
+   account for container padding. */
+.editor-scrollbar .scrollbar {
+  box-sizing: border-box;
+  height: calc(100% - 8px);
+  max-height: calc(100% - 8px);
+}
+
+/* Ensure the outer container has no visual chrome -- transparent and no radius/shadow */
+.editor-scrollbar {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Remove global input/button chrome for the vertical range used as scrollbar */
+.editor-scrollbar .scrollbar,
+.editor-scrollbar input[type="range"] {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Also clear webkit thumb/track background if present */
+.editor-scrollbar .scrollbar::-webkit-slider-runnable-track,
+.editor-scrollbar .scrollbar::-webkit-slider-thumb {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Make textarea fill the available column space */
+.content-textarea {
+  flex: 1 1 auto;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 12px 12px 20px 12px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: #0f0f0f;
+  caret-color: currentColor;
+  font-size: var(--editor-font-size);
+  line-height: var(--editor-line-height);
+  font-family: inherit;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* Use system default range/scrollbar appearance (no custom styling) */
+
+
+/* Make track/thumb visually stronger for debugging (only when debugging class present) */
+/* debug styles removed */
+
+/* no token overrides */
+/* allow horizontal scrolling but hide horizontal scrollbar visually */
+
+/* Do not override native textarea scrollbar; use system defaults */
+
+/* Line numbers column */
+.line-numbers {
+  width: 84px; /* increased to support 6+ digit line numbers without clipping */
+  padding: 12px 12px 12px 12px;
+  box-sizing: border-box;
+  background: transparent;
+  display: flex;
+  align-items: flex-start;
+}
+.line-numbers-pre {
+  margin: 0;
+  font-family: monospace;
+  /* match editor font-size/line-height exactly for pixel-perfect alignment */
+  font-size: var(--editor-font-size);
+  line-height: var(--editor-line-height);
+  color: rgba(0,0,0,0.45);
+  user-select: none;
+  pointer-events: none;
+  white-space: pre;
+  text-align: right;
+  padding-right: 8px;
+}
+
+/* File info: single-line, smaller, semi-transparent, margin, horizontal scroll when too long */
+.file-info {
+  padding: 8px 8px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+.file-info span {
+  display: block;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+  font-size: 0.85rem;
+  color: rgba(0,0,0,0.6);
+  padding-right: 8px;
+}
+
+/* Auto-scroll when content overflows (class added by JS) */
+.file-info span.auto-scroll {
+  display: inline-block;
+  padding-left: 8px;
+  transform: translateX(0);
+  animation: marquee var(--scroll-duration, 8s) linear infinite;
+  /* Ensure marquee uses full width of its visible container (parent clips) */
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(var(--scroll-distance) * -1)); }
+}
+
+
+.container {
+  margin: 0;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: 0.75s;
+}
+
+.logo.tauri:hover {
+  filter: drop-shadow(0 0 2em #24c8db);
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  text-align: center;
+}
+
+input,
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: #0f0f0f;
+  background-color: #ffffff;
+  transition: border-color 0.25s;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu button in header should visually match search button and align vertically */
+.menu-button {
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: inherit;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.menu-button svg {
+  display: block;
+}
+
+/* Icon blink animation used for loading/searching states */
+@keyframes blink-bright {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.6); }
+  100% { filter: brightness(1); }
+}
+
+@keyframes blink-dark {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(0.6); }
+  100% { filter: brightness(1); }
+}
+
+.icon-blink {
+  animation: blink-bright 1s ease-in-out infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .icon-blink {
+    animation: blink-dark 1s ease-in-out infinite;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #396cd8;
+}
+button:active {
+  border-color: #396cd8;
+  background-color: #e8e8e8;
+}
+
+input,
+button {
+  outline: none;
+}
+
+#greet-input {
+  margin-right: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f6f6f6;
+    background-color: #2f2f2f;
+  }
+
+  a:hover {
+    color: #24c8db;
+  }
+
+  input,
+  button {
+    color: #ffffff;
+    background-color: #0f0f0f98;
+  }
+  button:active {
+    background-color: #0f0f0f69;
+  }
+  /* textarea and content area should use light text on dark bg */
+  .content-textarea {
+    background-color: rgba(15,15,15,0.6);
+    color: #f6f6f6;
+    border-color: rgba(255,255,255,0.08);
+    caret-color: currentColor;
+  }
+  .file-info span {
+    color: rgba(255,255,255,0.75);
+  }
+  .line-numbers-pre {
+    color: rgba(255,255,255,0.45);
+  }
+}
